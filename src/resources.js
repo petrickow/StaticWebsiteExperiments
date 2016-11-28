@@ -1,42 +1,33 @@
-
-
-export class Resources {
-    jsonContent;
-    fName: string;
-
-    constructor(fName) {
-
+"use strict";
+var Resources = (function () {
+    function Resources(fName) {
         this.jsonContent = JSON.parse("{}");
-
         console.log("loadJSON" + fName);
         console.log(this);
-
-        this.loadJSON(fName, function(res) {
+        this.loadJSON(fName, function (res) {
             console.log(this);
             this.jsonContent = JSON.parse(res);
         });
     }
-
-    loadJSON(fileName, callback) {
-        console.log(this)
+    Resources.prototype.loadJSON = function (fileName, callback) {
+        console.log(this);
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-        xobj.open('GET', "resources/" + fileName, true); // Replace 'my_data' with the path to your file
+        xobj.open('GET', "resources/" + fileName, true);
         xobj.onreadystatechange = function () {
             console.log(this);
             if (xobj.readyState == 4 && xobj.status == 200) {
-                // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
                 callback(xobj.responseText);
             }
         };
         xobj.send(null);
-    }
-
-    getBio() {
+    };
+    Resources.prototype.getBio = function () {
         return this.jsonContent.biography_no;
-    }
-
-    setContent(res) {
+    };
+    Resources.prototype.setContent = function (res) {
         this.jsonContent = res;
-    }
-}
+    };
+    return Resources;
+}());
+exports.Resources = Resources;
