@@ -2,21 +2,15 @@
 var Resources = (function () {
     function Resources(fName) {
         var self = this;
-        self.jsonContent = JSON.parse("{}");
-        console.log("loadJSON" + fName);
-        console.log(this);
-        this.loadJSON(fName, function (res) {
-            console.log(self);
+        self.loadJSON(fName, function (res) {
             self.jsonContent = JSON.parse(res);
         });
     }
     Resources.prototype.loadJSON = function (fileName, callback) {
-        console.log(this);
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open('GET', "resources/" + fileName, true);
         xobj.onreadystatechange = function () {
-            console.log(this);
             if (xobj.readyState == 4 && xobj.status == 200) {
                 callback(xobj.responseText);
             }
@@ -24,10 +18,8 @@ var Resources = (function () {
         xobj.send(null);
     };
     Resources.prototype.getBio = function () {
-        return this.jsonContent.biography_no;
-    };
-    Resources.prototype.setContent = function (res) {
-        this.jsonContent = res;
+        console.log("getBio");
+        return self.jsonContent.biography_no;
     };
     return Resources;
 }());
