@@ -1,0 +1,309 @@
+<!--
+Statisk side som disposisjon for oppgaven i håp om
+at jeg skal holde oversikten over oppgaven
+-->
+
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="utf-8" />
+        <title>Oversikt</title>
+        
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+    </head>
+
+
+    <body>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Plan for oppgaven</h1>
+
+                <p>Updated:
+					<script type="text/javascript">
+						var date = new Date(document.lastModified);
+						document.write(date.toLocaleString());
+					</script>
+				</p>
+           		<div>
+					<button class="btn-primary" onclick="dataFolder()" >Data mappen</button>
+					<span>Inneholder pdf og log av oppgaven</span>
+            	</div>
+            </div>
+        </div>
+        <div class="container">
+ 
+            <div class="card">
+            <h3 class="card-header">Introduction</h3>
+                <ul>
+					<li>
+						<b>Introduksjon:</b> hva er SAS, 
+						kort definisjon av sleep apnea syndrom (<a target="_blank" href="http://www.nhlbi.nih.gov/health/health-topics/topics/sleepapnea/">eks</a>).
+					</li>
+
+
+					<li>
+						<b>Motivasjon:</b> <a target="_blank" href="http://dl.acm.org/citation.cfm?id=2555319.2555369&coll=DL&dl=ACM&CFID=620402164&CFTOKEN=77826003">
+						Alternativ/supplerende</a> til polysomnography (PSG). Store mørketall for SAS, nyttig med diagnose-indikasjon.
+						PSG er <a target="_blank" href="http://www.newchoicehealth.com/procedures/sleep-study-polysomnography">kostbart</a>, tidkrevende og 
+						krever søvnlaboratorium. Mobile løsninger?
+					</li>
+
+                    <li>
+                        <b>Beskrivelse:</b> nevne hva som brukes for å diagnostisere (defineres i background/implementasjon)
+						<ul>
+							<li>
+								PSG, gold standard for søvnforskning
+							</li>
+
+							<li>
+								EEG, EMG EOG, ECG, Oxygen Saturation, AHI, Blood pressure, Heart Rate, Respiratory Effort Meassurement.
+								Definisjoner <i>flyttes til background?</i>
+							</li>
+						</ul>
+                    </li>
+
+                    <li>
+                    	<b>Problem statement...</b><br/>
+						Transformere pustedata fra database til å matche data fra radar.<br/>
+						<i>Prøver å finne sammenlignbar data til RPM (respiration pr minute) i databasene</i> Er det andre data en kan hente fra puste-radaren?
+						Denne dataen kan så brukes som grunnlag for tester av de logiske sensorene, regne nøyaktighet for
+						deteksjon og legge til rette for fremtidig utvikling
+						<br/>
+					</li>
+
+					<li>
+						Omforme physionet data til RPM
+						<ul>
+							<li>
+								Fra nasal airflow?
+							</li>
+							
+							<li>
+								Fra ECG? 
+								<a targer="_blank" href="http://download-v2.springer.com/static/pdf/524/art%253A10.1007%252Fs10439-008-9580-2.pdf?token2=exp=1428912612~acl=%2Fstatic%2Fpdf%2F524%2Fart%25253A10.1007%25252Fs10439-008-9580-2.pdf*~hmac=322be61e6cb4fba91b1c49b9b12f1d19470c8c34b7b4f34ef7e004ed106d35f9">Comparison of respiratory rates derived from heart rate variability, ecg amplitude and nasal oral airflow</a>, 
+								<a target="_blank" href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=5256153&tag=1">Automatic detection of respirartion rate from ambulatory single lead ECG</a>
+							</li>
+							
+							<li>
+								Andre muligheter?
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<a target="_blank" href="http://www.physionet.org/physiobank/database/shhpsgdb/">
+						SHHS PSG DB</a>: "thoracic and abdominal excursions (THOR and ABDO), recorded by inductive plethysmography bands and sampled at 10 Hz"
+					</li>
+
+					<li>
+						<a target="_blank" href="http://physionet.org/physiobank/database/slpdb/">
+						MIT-BIH Polysomnographic Database</a>: "nasal air flow 250Hz"
+					</li>
+					
+					<hr/>
+                    <!-- Actigraphy? -->
+                </ul>
+            </div>
+        
+			
+			<div class="card">
+			<h3 class="card-header">Background</h3>
+				<ul>	
+					<li>
+						<i>
+						Respiratory effort, kan dette måles med radar? Begrenset tilgang til kildekoden
+						for radarsignaler gjør det vanskelig. Har vi kun RPM (respirations pr minute) fra radar?
+						</i>
+					</li>				
+					<li>
+						Forklaring <b>Sleep Apnea Syndrome (SAS)</b>, 
+						Teori bak hypopnea og apnea; hva som skiller dem
+						<ul>
+							<li>
+								The origin of apnea can be central (CA), caused
+								by the lack of central moto-neural respiration drive, or can be
+								obstructive (OA), caused by the occlusion of the upper airways. <a target="_blank" href="http://www.nhlbi.nih.gov/health/health-topics/topics/sleepapnea/">ref</a>
+							</li>
+
+							<li>
+								<b>OSA</b> - Despite the respiratory effort, the lack of air flow in the nose and mouth is obstructive sleep apnea. <a target="_blank" 
+								href="http://cdn.intechopen.com/pdfs-wm/26831.pdf">Obstructive sleep apnea (OSA) has the highest prevalence</a>[section 1.3]
+								<br/>
+								<b>CSA</b> - Together with the absence of respiratory effort in the lungs, the absence of air flow inside the mouth and nose is defined as central sleep apnea
+								<br/>
+								The situation starting with central sleep apnea and continuing as obstructive sleep apnea is defined as <b>mixed sleep apnea</b>
+								<br/>
+								<b>Complex sleep apnea</b> <a targer="_blank" href="http://www.journalsleep.org/Articles/290911.pdf">?</a>
+							</li>
+
+
+							
+							<li>
+								Konsekvenser av SAS. Vise til eksisterende forskning 
+								(<a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S0167527305003426">Hjerte problemer</a>, ...
+								<a target="_blank" href=""></a> 
+								)
+							</li>
+
+							<li>
+								Årsak og behandling, 
+							</li>
+						</ul>
+					</li>	
+
+					<li>
+						<b>Eksisterende data:</b> diskutere databasene som brukes. Hvilke krav stilles til
+						dataen for å kunne brukes i sammenligning
+					</li>
+
+					
+					<li>
+						Detaljer om hva som må detekteres for å kunne på vise forskjellige typer apnea.
+						Hva trengs for å gi en nøyaktig (indikasjon) på diagnose? (Gjennomgang av PSG?)
+					</li>
+					
+					<li>
+						Definere <b>Sensorer</b>, sensor nettverk. Beskrive hvordan
+						sensorer fungere, signal prossesering. Måling av fysiske verdier
+						oversatt til maskinlesbare tuppel for analysering.
+					</li>
+
+					<li>
+						Respiration radar fra Novelda, specs, muligheter, output.<br/>
+						Black box, men kort forklare hva den gjør
+					</li>
+
+					<li>
+						<b>Complex event processing:</b> Forklare teknologien,
+						<ul>
+							<li>
+								DSMS ...
+							</li>
+
+							<li>
+								Esper. Continious queries (CQ). Definisjon på DSMS vs CEP  
+							</li>
+
+							<li>
+								Bruksområder, logiske sensorer: 
+								Forklare de logiske sensorene i 
+								<b>TRIO</b>. Tilpasse data for 
+								testing av disse.
+							</li>
+
+						</ul>
+					</li>
+					
+					<hr/>
+
+					<li>
+						AHI -> Apnea–Hypopnea Index:  It is represented by the number of apnea and hypopnea events per hour of sleep<br/>
+						RDI -> Respiratory disturbance/distress index -> brukt i PSG. Pustehendelser, men ikke nødvendigvis apnea eller hypopnea
+					</li>
+				</ul>
+			</div>
+			
+            <div class="card">
+			<h3 class="card-header">Similar Work</h3>
+                <ul>
+					<li>
+						Dypere om hva som skal oppnås, hvilke lignende arbeid kan nevnes? (Maria's master, eksisterende forskning)
+					</li>
+
+                    <li>
+                    	Hvilke løsninger finnes for offline detektering, er disse sammenlignbare med online?
+                    </li>
+
+                    <li>
+                        Andre løsninger og hvordan de kan brukes til sanntidsdetektering (verifisering og diskusjon av resultater).
+                    </li>
+
+                    <li>
+                    	Mye forskning på detektering av søvnkvalitet ved bruk av non-intrusive sensorer (mye fokus på smart-telefoner)
+                    	(<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2110363.2110375&coll=DL&dl=ACM&CFID=620402164&CFTOKEN=77826003">eks</a>,
+                    	<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2639108.2642898&coll=DL&dl=ACM&CFID=620402164&CFTOKEN=77826003">eks</a>,
+                    	<a target="_blank" href="http://dl.acm.org/citation.cfm?id=2534504.2534536&coll=DL&dl=ACM&CFID=620402164&CFTOKEN=77826003">eks</a>)
+                    	Begrensinger i henhold til å oppdage AHI, dvs begrensningene til en smart-telefons senorer.
+                    </li>
+                </ul>
+            </div>
+
+            
+			<div class="card">
+            <h3 class="card-header">Implementation</h3>
+                <ul>
+					<li>
+                        Teori bak prosjektet, teknisk. <del>Detektering av forskjellige typer
+						apnea i et realtime system sammenlignet med ground truth for å
+						måle nøyaktighet.</del> <br/> Hvilke datasett ble brukt for å 
+						verifisere/vurdere målingene
+                    </li>
+
+                    <li>
+                        Hvilke data er nødvendig, hvordan disse samles og tolkes data (EEG, EMG EOG, ECG, Oxygen Saturation, AHI, 
+                        Blood pressure, Heart Rate, Respiratory Effort Meassurement)?
+                        Ved bruk av pustedeteksjon kan vi kun detektere CA, hvilke andre
+						sensorer kan brukes for å detektere OA?
+						<ul>
+							<li>
+								Radar? Heart Rate, Respiration?
+							</li>
+							
+							<li>
+								Andre sensorer ...?<br/>
+							</li>
+						</ul>
+                    </li>
+
+					<li>
+						Simulering, bruk av data. Omforming av data fra sensor til tilsvarende PSG
+						eller data fra database for sammenligning.
+					</li>
+
+                    <li>
+                        Hva tok jeg utgangspunkt i: Data mining fra Maria's oppgave,
+						Stein's logiske sensorer
+                    </li>
+                </ul>
+            </div>
+
+            
+			<div class="card">
+            <h3 class="card-header">Results</h3>
+            
+                <ul>
+                    <li>
+                        Oversikt over eksperimenter? 
+                    </li>
+
+                    <li>
+						Sammenligning med eksisterende resultater og nøyaktighet
+                    </li>
+                </ul>
+            </div>
+
+            
+			<div class="card">
+            <h3 class="card-header">Discussion and Conclusion</h3>
+                <ul>
+                    <li>
+                        Tyder resultatene på at dette kan fungere?
+                    </li>
+
+                    <li>
+                        Hva kan gjøres anderledes (<i>Future work</i>)
+                    </li>
+                </ul>
+
+            </div>
+		</div>
+		<!-- mmmhm -->
+		<script>
+			function dataFolder() {
+				window.location.href = 'http://folk.uio.no/catod/dta';
+			}
+		</script>
+    </body>
+<html>

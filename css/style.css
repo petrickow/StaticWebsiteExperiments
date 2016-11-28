@@ -1,0 +1,16 @@
+.card-header {
+	background-color: #D1E0E0;
+}
+
+.card {
+	box-shadow: 8px 8px 2px -3px rgb(184,184,184);
+	background-color: #ebebeb;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	/* Set the hr color */
+	color: #D1E0E0; /* old IE */
+	background-color: #D1E0E0; /* Modern Browsers */
+}
