@@ -1,12 +1,13 @@
 "use strict";
 var Resources = (function () {
     function Resources(fName) {
-        this.jsonContent = JSON.parse("{}");
+        var self = this;
+        self.jsonContent = JSON.parse("{}");
         console.log("loadJSON" + fName);
         console.log(this);
         this.loadJSON(fName, function (res) {
-            console.log(this);
-            this.jsonContent = JSON.parse(res);
+            console.log(self);
+            self.jsonContent = JSON.parse(res);
         });
     }
     Resources.prototype.loadJSON = function (fileName, callback) {

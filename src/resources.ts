@@ -3,17 +3,17 @@
 export class Resources {
     jsonContent;
     fName: string;
-
     constructor(fName) {
+        var self = this;
 
-        this.jsonContent = JSON.parse("{}");
+        self.jsonContent = JSON.parse("{}");
 
         console.log("loadJSON" + fName);
         console.log(this);
 
         this.loadJSON(fName, function(res) {
-            console.log(this);
-            this.jsonContent = JSON.parse(res);
+            console.log(self);
+            self.jsonContent = JSON.parse(res);
         });
     }
 
