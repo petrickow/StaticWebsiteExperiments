@@ -1,10 +1,12 @@
 
 import {Resources} from './resources';
 
+
 export class App {
     heading :string;
     biography :string = "";
     r : Resources;
+
     constructor() {
         this.r = new Resources("texts.json");
         this.heading  = "Stuff";
