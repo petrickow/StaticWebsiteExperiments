@@ -1,18 +1,17 @@
 
 
 export class Resources {
-    jsonContent;
+    jsonContent: any;
     fName: string;
+    country_code: String;
 
     constructor(fName) {
         var self = this;
-
-//        self.jsonContent = JSON.parse("{}");
-
+        this.country_code = "no"
 
         self.loadJSON(fName, function(res) {
             self.jsonContent = JSON.parse(res);
-            
+            //TODO broadcast event, resources loaded
         });
     }
 
@@ -29,8 +28,11 @@ export class Resources {
         xobj.send(null);
     }
 
+    /* Exposed */
     public getBio() {
         console.log("getBio");
-        return self.jsonContent.biography_no;
+        console.log(this.jsonContent);
+        return this.jsonContent.biography_no;
     }
+
 }
