@@ -1,24 +1,26 @@
 
 <template>
+    <nav>
+        <p>This is my ${router.navigation.length} ${test}</p>
+        <ul>
+            <li repeat.for = "row of router.navigation">
+                <a href.bind = "row.href">${row.title}</a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="container">
-        <h1>${heading}</h1>
-
-        <div class="btn-group btn-group-lg" role="group" aria-label="...">
-            <button type="button" class="btn btn-primary" click.trigger="toggleBio()">Open Bio</button>
-            <button type="button" class="btn btn-primary" click.trigger="doSomething()">Open Other</button>
-            <button type="button" class="btn btn-primary" click.trigger="doSomething()">Open Something</button>
-
-        </div>
-        <div class="card" id="bio" go.call="doSomething()">
-            <p class="content">${biography}</p>
+        <div class="row">
+            <div class="col-md-4">placeholder</div>
+            <router-view> </router-view>
         </div>
 
-        <div id="audioPlayer">
-            <audio controls="controls" preload="metadata" id="player">
-                <source src="https://petrickow.github.io/StaticWebsiteExperiments/file.mp3" />
-                <b>Your browser does not support HTML5 audio element</b>
-            </audio>
-        </div>
     </div>
+        <!--<div id="audioPlayer">
+        <audio controls="controls" preload="metadata" id="player">
+        <source src="https://petrickow.github.io/StaticWebsiteExperiments/file.mp3" />
+        <b>Your browser does not support HTML5 audio element</b>
+    </audio>
+</div>-->
 
 </template>

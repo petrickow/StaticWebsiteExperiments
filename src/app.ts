@@ -1,22 +1,26 @@
-
-import {Resources} from './resources';
-
+import {Router, RouterConfiguration} from "aurelia-router";
+//import {Resources} from './resources';
 
 export class App {
-    heading :string;
-    biography :string = "";
-    r : Resources;
+    router :Router;
+    test: String;
 
     constructor() {
-        this.r = new Resources("texts.json");
-        this.heading  = "Stuff";
+        console.log('Why');
+        this.test = 'not?';
     }
 
-    toggleBio() {
-        this.biography = this.biography.length > 0 ?  "" : this.r.getBio();
-    }
+    configureRouter(config: RouterConfiguration, router: Router){
+        console.log("therefore");
+        this.test = 'why';
 
-    doSomething() {
-        console.log("does stuff");
+        config.title = 'Aurelia';
+        config.map([
+            { route: ['','home'], moduleId: './home', nav: true, title: 'home'},
+            { route: 'cv', moduleId: './cv', nav: true, title: 'CV'}
+        ]);
+
+        this.router = router;
+        console.log(router);
     }
 }
