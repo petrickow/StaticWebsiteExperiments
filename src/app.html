@@ -1,26 +1,31 @@
 
 <template>
-    <nav>
-        <p>This is my ${router.navigation.length} ${test}</p>
-        <ul>
-            <li repeat.for = "row of router.navigation">
-                <a href.bind = "row.href">${row.title}</a>
-            </li>
-        </ul>
-    </nav>
 
-    <div class="container">
+        <nav>
+            <ul class="nav nav-tabs">
+                <li repeat.for = "row of router.navigation">
+                    <a href.bind = "row.href">${row.title}</a>
+                </li>
+            </ul>
+        </nav>
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">placeholder</div>
-            <router-view> </router-view>
-        </div>
+            <div class="col-md-2">
+                <p>Side menu</p>
+                <div id="audioPlayer">
+                    <audio controls="controls" preload="metadata" id="player">
+                        <source src="https://petrickow.github.io/StaticWebsiteExperiments/file.mp3" />
+                        <b>Your browser does not support HTML5 audio element</b>
+                    </audio>
+                </div>
 
+            </div>
+            <div class="col-md-10">
+                <router-view> </router-view>
+            </div>
+        </div>
     </div>
-        <!--<div id="audioPlayer">
-        <audio controls="controls" preload="metadata" id="player">
-        <source src="https://petrickow.github.io/StaticWebsiteExperiments/file.mp3" />
-        <b>Your browser does not support HTML5 audio element</b>
-    </audio>
-</div>-->
+        <!---->
 
 </template>
