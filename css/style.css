@@ -1,12 +1,13 @@
 .card-header {
 	background-color: #D1E0E0;
-}
-
-.content{
-	margin: 1em 1em;
+	padding-left: 3%;
+	
+	box-shadow: 8px 8px 2px -3px rgb(184,184,184);
 }
 
 .card {
+	padding-left: 3%;
+	padding-right: 3%;
 	box-shadow: 8px 8px 2px -3px rgb(184,184,184);
 	background-color: #ebebeb;
 }

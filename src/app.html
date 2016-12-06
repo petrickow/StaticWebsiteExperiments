@@ -1,31 +1,35 @@
-
 <template>
-
-        <nav>
-            <ul class="nav nav-tabs">
-                <li repeat.for = "row of router.navigation">
-                    <a href.bind = "row.href">${row.title}</a>
+    <nav>
+        <ul class="nav nav-tabs">
+            <li repeat.for = "row of router.navigation">
+                <a href.bind = "row.href">${row.title}</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <!-- side menu -->
+        <div class="col-sm-2">
+            <p>Side menu. TODO:</p>
+            <ul>
+                <li>
+                    move navigation here?
+                </li>
+                <li>
+                    responsive, close menu when width == bootstrap sm
                 </li>
             </ul>
-        </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <p>Side menu</p>
-                <div id="audioPlayer">
-                    <audio controls="controls" preload="metadata" id="player">
-                        <source src="https://petrickow.github.io/StaticWebsiteExperiments/file.mp3" />
-                        <b>Your browser does not support HTML5 audio element</b>
-                    </audio>
-                </div>
-
-            </div>
-            <div class="col-md-10">
-                <router-view> </router-view>
+            
+            <div id="audioPlayer">
+                <audio controls="controls" preload="metadata" id="player">
+                    <source src="https://petrickow.github.io/StaticWebsiteExperiments/file.mp3" />
+                    <b>Your browser does not support HTML5 audio element</b>
+                </audio>
             </div>
         </div>
-    </div>
-        <!---->
 
+        <!-- main content -->
+        <div class="col-sm-10">
+            <router-view> </router-view>
+        </div>
+    </div>
 </template>
